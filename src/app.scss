@@ -1,18 +1,28 @@
 @import 'normalize-scss';
 @include normalize();
 
+body {
+  font-family: 'Lato', sans-serif;
+}
+
 .App {
   display: flex;
-  justify-content: center;
+  //justify-content: center;
   flex-direction: column;
   align-items: center;
   min-height: 100vh;
 
   header {
+    -webkit-user-select: none;
+    background: skyblue;
+    text-align: center;
+    color: white;
     font-size: 64px;
+    width: 100%;
+    padding: 12px 0;
   }
 
-  button {
+  main {
     padding: 16px;
     font-size: 48px;
   }

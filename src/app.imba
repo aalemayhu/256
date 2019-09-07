@@ -1,17 +1,14 @@
 tag App
   def setup
-    @n = 0
+    # TODO: Check if user has already an open file
+    console.log "setup"
 
   def score
     @n += 1
 
   def render
     <self>
-      <header>
-        "Hello, world!"
-      <header>
-        "Score: {@n}"
-      <button :tap.score>
-        "Get a point"
+      <header> "256"
+      <main> "coming soon"
 
 Imba.mount <App>
