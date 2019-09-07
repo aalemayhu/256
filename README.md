@@ -1,6 +1,6 @@
-# imba-electron-hello-world
+# 256
 
-Hello World app with Electron and Imba.
+A text editor to encourage you to write 256 words per day.
 
 ## Install dependencies
 

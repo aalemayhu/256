@@ -1,13 +1,13 @@
 {
-  "name": "imba-electron-hello-world",
-  "description": "Imba Electron Hello World",
+  "name": "@scanf/256",
+  "description": "a text editor for writing 256 words",
   "keywords": [
-    "imba",
+    "256",
     "electron",
-    "sass"
+    "text editor"
   ],
-  "author": "Tomasz Wegrzanowski",
-  "version": "1.0.0",
+  "author": "Alexander Alemayhu",
+  "version": "0.0.0",
   "engines": {
     "node": ">=6.0.0"
   },
@@ -15,15 +15,15 @@
   "scripts": {
     "build": "webpack --mode=production",
     "dev": "webpack-dev-server --mode=development --content-base dist/",
-    "package-linux": "electron-packager . 'Hello World' --platform=linux",
-    "package-osx": "electron-packager . 'Hello World' --platform=darwin",
-    "package-windows": "electron-packager . 'Hello World' --platform=win32",
+    "package-linux": "electron-packager . '256' --platform=linux",
+    "package-osx": "electron-packager . '256' --platform=darwin",
+    "package-windows": "electron-packager . '256' --platform=win32",
     "start": "electron .",
     "watch": "webpack --watch --progress --colors --display-modules"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/taw/imba-electron-hello-world.git"
+    "url": "git://github.com/scanf/256.git"
   },
   "license": "MIT",
   "dependencies": {
