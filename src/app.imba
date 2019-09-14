@@ -24,7 +24,6 @@ tag App
   def render
     <self>
       <header css:font-size="{@fontSize}px"> @title
-      <main> "coming soon"
       <textarea placeholder="Start typing..."  :keydown.textchange>
 
 Imba.mount <App>
