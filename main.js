@@ -1,4 +1,8 @@
-let { app, BrowserWindow, globalShortcut } = require("electron")
+let { 
+  app, BrowserWindow, globalShortcut, dialog, ipcMain 
+} = require("electron")
+
+const fs = require('fs');
 
 const SHORTCUTS = {
   OPEN_FILE: 'CommandOrControl+O',
@@ -23,9 +27,18 @@ function createWindow () {
   }
 
   // Add the shortcut(s)
-  globalShortcut.register(SHORTCUTS.OPEN_FILE, () => {
-    // TODO: show dialog for opening file
-    console.log('pressed CMD+O');
+  globalShortcut.register(SHORTCUTS.OPEN_FILE, async () => {
+    try {
+      const result = await dialog.showOpenDialog({properties: ['openFile']});
+      if (result && !result.canceled) {
+        const filePath = result.filePaths[0];
+        const contents = fs.readFileSync(filePath);
+        const payload = contents.toString();
+        win.webContents.send('read-file', payload);
+        return;
+      } 
+    } catch (error) { console.error(error); }
+    // TODO: show error message, file could not be opened.
   });
   globalShortcut.register(SHORTCUTS.SAVE_FILE, () => {
     // TODO: save file
