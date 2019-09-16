@@ -1,6 +1,6 @@
 const { ipcRenderer } = require('electron');
 
-ipcRenderer.on('read-file', (event, data) => {
+ipcRenderer.on('load-contents', (event, data) => {
   const editor = document.getElementById('editor');
   if (editor) {
     editor.value = data;

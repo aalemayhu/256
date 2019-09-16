@@ -1,13 +1,14 @@
-let { 
+const fs = require('fs');
+const { 
   app, BrowserWindow, globalShortcut, dialog, ipcMain 
 } = require("electron")
-
-const fs = require('fs');
 
 const SHORTCUTS = {
   OPEN_FILE: 'CommandOrControl+O',
   SAVE_FILE: 'CommandOrControl+S'
 };
+
+// TODO: clean up this file
 
 function createWindow () {
   // Create the browser window.
@@ -34,15 +35,21 @@ function createWindow () {
         const filePath = result.filePaths[0];
         const contents = fs.readFileSync(filePath);
         const payload = contents.toString();
-        win.webContents.send('read-file', payload);
+        win.webContents.send('load-contents', payload);
         return;
       } 
     } catch (error) { console.error(error); }
     // TODO: show error message, file could not be opened.
   });
-  globalShortcut.register(SHORTCUTS.SAVE_FILE, () => {
-    // TODO: save file
-    console.log('pressed CMD+S');
+  globalShortcut.register(SHORTCUTS.SAVE_FILE, async () => {
+    const result = await dialog.showSaveDialog(null);
+    if (result && !result.canceled) {
+      const {filePath} = result;
+      // TODO: retrieve editor contents
+      console.log('save path', filePath);
+      return;
+    }
+    // TODO: error
   });
 }
 
