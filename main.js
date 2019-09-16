@@ -1,4 +1,9 @@
-let { app, BrowserWindow } = require("electron")
+let { app, BrowserWindow, globalShortcut } = require("electron")
+
+const SHORTCUTS = {
+  OPEN_FILE: 'CommandOrControl+O',
+  SAVE_FILE: 'CommandOrControl+S'
+};
 
 function createWindow () {
   // Create the browser window.
@@ -16,6 +21,16 @@ function createWindow () {
     const port = process.env.PORT || 8080;
     win.loadURL(`http://localhost:${port}`)
   }
+
+  // Add the shortcut(s)
+  globalShortcut.register(SHORTCUTS.OPEN_FILE, () => {
+    // TODO: show dialog for opening file
+    console.log('pressed CMD+O');
+  });
+  globalShortcut.register(SHORTCUTS.SAVE_FILE, () => {
+    // TODO: save file
+    console.log('pressed CMD+S');
+  });
 }
 
 app.on("ready", createWindow)
